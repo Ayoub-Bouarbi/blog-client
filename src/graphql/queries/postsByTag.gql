@@ -1,0 +1,24 @@
+query($slug: String!, $published: Boolean!){
+  posts: postsByTag(slug: $slug,published: $published){
+    id
+    title
+    content
+    published
+    description
+    published_at
+    featured
+    enable_comments
+    views
+    user{
+      id
+      fullname
+    }
+    category{
+      id
+      name
+    }
+    comments{
+      id
+    }
+  }
+}

@@ -1,0 +1,24 @@
+query($published: Boolean!){
+  posts: publishedPosts(published: $published){
+    id
+    title
+    content
+    published
+    description
+    published_at
+    featured
+    enable_comments
+    views
+    category{
+        id
+        name
+    }
+    user{
+      id
+      fullname
+    }
+    comments{
+      id
+    }
+  }
+}

@@ -1,0 +1,34 @@
+query($id: ID!) {
+    post(id: $id) {
+        id
+        title
+        content
+        user {
+            id
+            fullname
+            avatar
+            bio
+        }
+        category {
+            id
+            name
+            slug
+        }
+        tags {
+            id
+            name
+            slug
+        }
+        comments {
+            id
+            content
+            created_at
+            parent_id
+            user {
+                id
+                fullname
+                avatar
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+mutation($content: String!,$approved: Boolean,$user_id: ID!,$post_id: ID!,$parent_id: ID) {
+  comment: createComment(content: $content,approved: $approved,user_id: $user_id,post_id:$post_id,parent_id: $parent_id){
+        id
+        content
+        created_at
+        user{
+            id
+            fullname
+            avatar
+        }
+  }
+}

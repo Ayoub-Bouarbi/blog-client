@@ -1,0 +1,12 @@
+query($limit: Int!){
+categories: pagintaedCategories(first: $limit){
+    data{
+      id
+      name
+      slug
+      posts{
+        id
+      }
+    }
+  }
+}

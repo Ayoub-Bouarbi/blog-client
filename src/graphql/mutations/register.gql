@@ -1,0 +1,5 @@
+mutation($input: RegisterInput){
+    register(input: $input){
+        status
+    }
+}

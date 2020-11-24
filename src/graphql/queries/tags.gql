@@ -1,0 +1,9 @@
+query($limit: Int!){
+ tags: pagintaedTags(first: $limit){
+    data{
+      id
+      name
+      slug
+    }
+  }
+}

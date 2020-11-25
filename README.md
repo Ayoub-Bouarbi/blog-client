@@ -1,7 +1,24 @@
-# Client Blog Site 
+# Blog 
 
 
-## How to setup
+## Dependencies
+ * Vue.js
+ * npm
+ * Apollo.js
+  
+  
+## Getting Started
+```
+# clone the project
+git clone https://github.com/Ayoub-Bouarbi/blog-client.git
 
-1. npm install
-2. npm run serve
+# enter the project directory
+cd blog-client
+
+# install dependency
+npm install
+
+# develop
+npm run start
+
+```

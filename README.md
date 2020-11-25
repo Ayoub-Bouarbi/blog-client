@@ -8,17 +8,17 @@
   
   
 ## Getting Started
-```
+``` diff
 # clone the project
-- git clone https://github.com/Ayoub-Bouarbi/blog-client.git
+  git clone https://github.com/Ayoub-Bouarbi/blog-client.git
 
 # enter the project directory
-- cd blog-client
+  cd blog-client
 
 # install dependency
-- npm install
+  npm install
 
 # develop
-- npm run start
+  npm run start
 
 ```

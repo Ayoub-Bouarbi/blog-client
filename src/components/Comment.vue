@@ -2,8 +2,10 @@
     <div>
         <li>
             <div class="vcard bio">
-                <img :src="comment.user.avatar != null ? 'http://blog_api.test/storage/uploads/' + comment.user.avatar : 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R'"
-                    alt="Image placeholder">
+                <img v-if="comment.user.avatar != null" :src="imgUrl"
+                    alt="Image placeholder" class="img-fluid mb-4">
+                <img v-else src="../static/profile.jpg"
+                    alt="Image placeholder" class="img-fluid mb-4">
             </div>
             <div class="comment-body">
                 <h3> {{ comment.user.fullname }} </h3>
@@ -44,6 +46,11 @@
         components: {
             'comment-list': CommentList
         },
+        computed: {
+            imgUrl(){
+                return process.env.VUE_APP_HTTP +'/storage/uploads/' + this.comment.user.avatar;
+            }
+        },
         methods: {
             removeComment(comment) {
                 if (this.$store.getters.getUser != null && this.$store.getters.getUser.id != comment.user.id)
@@ -62,7 +69,6 @@
             reply() {
                 this.replyToComment = true;
                 this.$nextTick(() => {
-                    // console.log(this.$refs.textarea);
                     this.$refs.textarea.focus();
                 })
             },

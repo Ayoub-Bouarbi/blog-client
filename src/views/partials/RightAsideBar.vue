@@ -55,9 +55,7 @@
 
 <script>
     import LOGOUT_USER from '@/graphql/mutations/logout.gql';
-    import {
-        onLogout
-    } from '@/vue-apollo.js';
+    import { onLogout } from '@/vue-apollo.js';
 
     export default {
         methods: {
@@ -65,15 +63,11 @@
                 this.$apollo.mutate({
                         mutation: LOGOUT_USER
                     })
-                    .then(({
-                        data
-                    }) => {
+                    .then(({ data }) => {
                         this.$store.dispatch('logout');
                         onLogout();
                     })
-                    .catch(({
-                        data
-                    }) => {
+                    .catch(({ data }) => {
                         console.log(data);
                     })
             },

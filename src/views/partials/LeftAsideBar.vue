@@ -2,7 +2,7 @@
     <div>
         <aside id="blog-aside" role="complementary" class="js-fullheight">
             <h1 id="blog-logo" class="mb-5">
-                <router-link :to="{name:'Home'}" style="background-image: url(../images/bg_1.jpg);">
+                <router-link :to="{name:'Home'}" class="logo">
                     Andrea
                     <span>Moore</span>
                 </router-link>

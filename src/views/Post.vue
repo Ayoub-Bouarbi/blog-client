@@ -14,8 +14,11 @@
                         </div>
                         <div class="about-author d-flex p-4 bg-light">
                             <div class="bio mr-5">
-                                <img :src="post.user.avatar != null ? 'http://blog_api.test/storage/uploads/' + post.user.avatar : 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R'"
+                                <img v-if="post.user.avatar != null" :src=" process.env.VUE_APP_HTTP +'/storage/uploads/' + post.user.avatar"
                                     alt="Image placeholder" class="img-fluid mb-4">
+                                <img v-else src="../static/profile.jpg"
+                                    alt="Image placeholder" class="img-fluid mb-4">
+                                
                             </div>
                             <div class="desc">
                                 <h3>{{ post.user.fullname }}</h3>

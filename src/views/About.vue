@@ -3,8 +3,7 @@
     <div class="container-fluid">
       <div class="row d-flex">
         <div class="col-md-6 d-flex">
-          <div class="img d-flex align-self-stretch align-items-center js-fullheight"
-            style="background-image:url(images/about.jpg);height: 635px;">
+          <div class="img img-about d-flex align-self-stretch align-items-center js-fullheight">
           </div>
         </div>
         <div class="col-md-6 d-flex align-items-center">

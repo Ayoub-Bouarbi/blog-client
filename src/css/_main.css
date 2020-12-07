@@ -13375,3 +13375,11 @@ textarea.form-control {
         visibility: visible;
         transform: scaleX(1);
     }
+.logo {
+    background-image: url(../static/bg_1.jpg);
+}
+
+.img-about{
+    background-image:url(../static/about.jpg);
+    height: 635px;
+}

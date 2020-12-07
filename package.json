@@ -1,10 +1,10 @@
 {
-  "name": "blog-site",
+  "name": "blog-client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "rm -rf ../../../public/assets/app/{js,css,img} && vue-cli-service build --no-clean"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "array-to-tree": "^3.3.2",

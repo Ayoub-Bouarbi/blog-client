@@ -1,40 +1,28 @@
 <template>
-    <div class="page-wrapper">
-        <div class="page-content--bge5">
-            <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
-                        <div class="login-form">
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <input class="au-input au-input--full" v-model="email" type="email" name="email"
-                                    placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input class="au-input au-input--full" v-model="password" type="password"
-                                    name="password" placeholder="Password">
-                            </div>
-                            <button class="au-btn--block btn btn-primary m-b-20" @click="submit">sign
-                                in</button>
+        <div class="w-3/6 mx-auto">
+            <div class="my-2">
+                <label class="mb-1 block font-lato">Email Address</label>
+                <input class="w-full transition duration-500 ease-in-out border border-primary hover:border-secondary p-2" v-model="email" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="my-2">
+                <label class="mb-1 block font-lato">Password</label>
+                <input class="w-full transition duration-500 ease-in-out border border-primary hover:border-secondary p-2" v-model="password" type="password" name="password"
+                    placeholder="Password">
+            </div>
+            <button class="bg-white border border-primary text-base inline-block mt-2 text-primary hover:border-secondary hover:text-secondary transition duration-500 ease-in-out px-3 py-2" @click="submit">Sign
+                in</button>
 
-                        <div class="register-link">
-                            <p>
-                                You don't have account?
-                                <router-link :to="{name: 'Register'}">Register</router-link>
-                            </p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-10">
+                <p>
+                    You don't have account?
+                    <router-link :to="{name: 'Register'}" class="underline text-primary hover:text-secondary transition duration-500 ease-in-out">Register</router-link>
+                </p>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
-
-import LOGIN from '@/graphql/mutations/login.gql';
+    import LOGIN from '@/graphql/mutations/login.gql';
 
     export default {
         name: 'Login',
@@ -47,83 +35,29 @@ import LOGIN from '@/graphql/mutations/login.gql';
         methods: {
             submit() {
                 this.$apollo.mutate({
-                    mutation: LOGIN,
-                    variables: {
-                        input: {
-                            username: this.email,
-                            password: this.password
+                        mutation: LOGIN,
+                        variables: {
+                            input: {
+                                username: this.email,
+                                password: this.password
+                            }
                         }
-                    }
-                })
-                .then(({data}) => {
-                    this.$store.dispatch('login',{'apolloClient': this.$apollo.provider.defaultClient,'login': data.login});
-                    this.$router.push({
-                        name: 'Home'
+                    })
+                    .then(({ data }) => {
+                        this.$store.dispatch('login', {
+                            'apolloClient': this.$apollo.provider.defaultClient,
+                            'login': data.login
+                        });
+                        this.$router.push({
+                            name: 'Home'
+                        });
+                        this.$toast.success('Successfully Logged In!', 'OK');
+                    })
+                    .catch(({ data }) => {
+                        console.log(data);
                     });
-                    this.$toast.success('Successfully Logged In!', 'OK');
-                })
-                .catch(({data}) => {
-                    console.log(data);
-                });
 
             }
         },
     }
-
 </script>
-
-<style scoped>
-
-.page-wrapper {
-    overflow: hidden;
-    background: #e5e5e5;
-    padding-bottom: 8vh;
-}
-
-.page-content--bge5 {
-    background: #e5e5e5;
-    height: 100vh;
-}
-
-.login-wrap {
-    max-width: 540px;
-    padding-top: 8vh;
-    margin: 0 auto;
-}
-
-.login-content {
-    background: #fff;
-    padding: 30px 30px 20px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-}
-
-.login-form .form-group label {
-    display: block;
-}
-
-.au-input {
-    line-height: 43px;
-    border: 1px solid #e5e5e5;
-    font-size: 14px;
-    color: #666;
-    padding: 0 17px;
-    border-radius: 3px;
-    transition: all 0.5s ease;
-}
-
-.au-input--full {
-    width: 100%;
-}
-
-.au-btn--block {
-    display: block;
-    width: 100%;
-}
-
-.m-b-20 {
-    margin-bottom: 20px;
-}
-
-</style>

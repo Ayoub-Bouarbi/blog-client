@@ -1,38 +1,29 @@
 <template>
-    <div>
-        <div class="text text-2 pl-md-4">
-            <h3 class="mb-2">
+    <div class="mt-3 ml-10 mr-10 mb-10">
+        <div class="img bg-gray-200 overflow-hidden">
+            <img src="../static/bg_1.jpg" class="h-full w-full transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" alt="">
+        </div>
+        <div class="mt-5">
+            <h1 class="text-4xl bold font-bebas">
                 <router-link :to="{name:'Post',params:{ 'id': post.id }}">
                     {{ post.title }}
                 </router-link>
-            </h3>
-            <div class="meta-wrap">
-                <p class="meta">
-                    <span>
-                        <i class="icon-calendar mr-2"></i>
-                        {{ post.published_at | convertDate}}
-                    </span>
-                    <span>
-                        <router-link :to="{name:'Post',params:{ 'id': post.id }}">
-                            <i class="icon-folder-o mr-2"></i>
-                            {{ post.category.name }}
-                        </router-link>
-                    </span>
-                    <span>
-                        <i class="icon-comment2 mr-2"></i>
-                        {{ post.comments.length }} Comment
-                    </span>
-                </p>
+            </h1>
+            <p class="mt-3 text-sm text-gray-500 font-lato"> {{ post.description }}</p>
+            <div class="info py-3">
+                <span class="text-xs font-lato uppercase"><i class="icon-calendar"></i>
+                    {{ post.published_at | convertDate}}</span>
+                <span class="text-xs font-lato text-secondary uppercase">
+                    <router-link :to="{name: 'Posts',params: {tag: 'category',slug: post.category.slug}}">
+                        <i class="icon-card_travel"></i> {{ post.category.name }}
+                    </router-link>
+                </span>
+                <span class="text-xs font-lato uppercase"><i class="icon-comment"></i>
+                    {{ post.comments.length }} Comment</span>
             </div>
-            <p class="mb-4">
-                {{ post.description }}
-            </p>
-            <p>
-                <router-link :to="{name:'Post',params:{ 'id': post.id }}" class="btn-custom">
-                    Read More
-                    <span class="ion-ios-arrow-forward"></span>
-                </router-link>
-            </p>
+            <router-link class="text-xs font-lato" :to="{name:'Post',params:{ 'id': post.id }}">
+                READ MORE >
+            </router-link>
         </div>
     </div>
 </template>
@@ -47,18 +38,15 @@
         }
 
     }
-
 </script>
 
 <style>
-    .btn-custom {
-        position: relative;
+    .info span::after{
+        content: '/';
+        padding: 0 10px;
+        color: #000;
     }
-
-    .ion-ios-arrow-forward:before {
-        position: absolute;
-        top: 4px;
-        right: -10px;
+    .info span:last-child::after{
+        content: '';
     }
-
 </style>

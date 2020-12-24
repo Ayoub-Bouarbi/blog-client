@@ -1,18 +1,21 @@
 <template>
-  <div class="blog-page">
-    <left-aside-bar />
-    <div id="blog-main">
-        <router-view />
-    </div>
+  <div>
+    <app-header />
+    <main class="container mx-auto overflow-hidden my-20">
+      <router-view />
+    </main>
+    <app-footer />
   </div>
 </template>
 
 <script>
-  import LeftAsideBar from '@/views/partials/LeftAsideBar';
+  import AppHeader from '@/views/partials/AppHeader';
+  import AppFooter from '@/views/partials/AppFooter';
 
   export default {
     components: {
-      LeftAsideBar
+      AppHeader,
+      AppFooter
     }
   }
 </script>

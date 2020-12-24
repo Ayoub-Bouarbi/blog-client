@@ -11,6 +11,7 @@ query($published: Boolean!){
     views
     category{
         id
+        slug
         name
     }
     user{

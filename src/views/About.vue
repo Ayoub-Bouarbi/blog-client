@@ -1,17 +1,43 @@
 <template>
-  <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
-    <div class="container-fluid">
-      <div class="row d-flex">
-        <div class="col-md-6 d-flex">
-          <div class="img img-about d-flex align-self-stretch align-items-center js-fullheight">
+  <section>
+    <div class="w-full my-6">
+      <img src="../static/bg_1.jpg" class="mx-auto" alt="">
+    </div>
+    <div class="mx-36 overflow-hidden">
+      <div class="w-3/5 float-left">
+        <h1 class="text-3xl mb-6 font-bebas">About us</h1>
+        <h3 class="text-xl my-3 font-lato">A global video channel screening the best in cultuer</h3>
+        <p class="text-gray-700 font-lato mb-3">Lorem Ipsum is simply dummy text of the printing and
+          typesetting industry.
+          Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+          and
+          scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+          leap
+          into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+          the
+          release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+          publishing
+          software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div>
+
+      <div class="mt-12 w-2/5 flex justify-center float-left">
+        <div class="w-3/4 text-center">
+          <div>
+            <button class="border border-primary text-primary font-lato bg-transparent hover:border-secondary hover:text-secondary transition duration-500 ease-in-out px-8 py-3">BECAME A MEMBER</button>
+            <p class="my-4 font-lato">ALREADY A MEMBER? <a href="" class="text-primary underline hover:text-secondary transition duration-500 ease-in-out">Sign in</a> </p>
           </div>
-        </div>
-        <div class="col-md-6 d-flex align-items-center">
-          <div class="text px-4 pt-5 pt-md-0 px-md-4 pr-md-5">
-            <h2 class="mb-4">I'm <span>Andrea Moore</span> a Scotish Blogger &amp; Explorer</h2>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-              paradisematic country, in which roasted parts of sentences fly into your mouth. It is a paradisematic
-              country, in which roasted parts of sentences fly into your mouth.</p>
+          <div class="bg-primary text-white">
+            <div class="grid grid-cols-3">
+              <i class="icon-facebook p-5 place-self-center text-2xl"></i>
+              <i class="icon-github p-5 place-self-center text-2xl"></i>
+              <i class="icon-twitter p-5 place-self-center text-2xl"></i>
+            </div>
+            <div class="grid grid-cols-3">
+              <i class="icon-instagram p-5 place-self-center text-2xl"></i>
+              <i class="icon-google p-5 place-self-center text-2xl"></i>
+              <i class="icon-linkedin p-5 place-self-center text-2xl"></i>
+            </div>
           </div>
         </div>
       </div>

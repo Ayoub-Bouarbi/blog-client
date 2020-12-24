@@ -1,31 +1,30 @@
 <template>
-    <div>
-        <li>
-            <div class="vcard bio">
-                <img v-if="comment.user.avatar != null" :src="imgUrl"
-                    alt="Image placeholder" class="img-fluid mb-4">
-                <img v-else src="../static/profile.jpg"
-                    alt="Image placeholder" class="img-fluid mb-4">
+    <div class="overflow-hidden my-10">
+        <div class="float-left w-1/5">
+            <img v-if="comment.user.avatar != null" :src="imgUrl" alt="Image placeholder" class="w-52">
+            <img v-else src="../static/profile.jpg" alt="Image placeholder" class="w-52">
+
+        </div>
+        <div class="float-left w-4/6 ml-4 relative">
+            <h3 class="text-xl mb-3">{{ comment.user.fullname }}</h3>
+            <span class="absolute bg-primary text-xs text-white rounded px-2 right-0 top-0">{{ comment.created_at | convertDate }}</span>
+            <p class=" leading-relaxed text-sm font-lato">
+                {{ comment.content }}
+            </p>
+            <div v-if="replyToComment != true">
+                <a @click="reply" class="bg-white border border-primary text-xs inline-block mt-2 cursor-pointer text-primary  hover:bg-primary hover:text-white transition duration-500 ease-in-out  rounded px-2 py-1">Reply</a>
+                <a v-if="$store.getters.getUser != null && $store.getters.getUser.id == comment.user.id"
+                    @click="removeComment(comment)" class="bg-white border border-primary text-xs inline-block mt-2 cursor-pointer text-primary rounded  hover:bg-primary hover:text-white transition duration-500 ease-in-out  px-2 py-1">Delete</a>
             </div>
-            <div class="comment-body">
-                <h3> {{ comment.user.fullname }} </h3>
-                <div class="meta">{{ comment.created_at }}</div>
-                <p>{{ comment.content }}</p>
-                <p>
-                    <a @click="reply" class="reply">Reply</a>
-                    <a v-if="$store.getters.getUser != null && $store.getters.getUser.id == comment.user.id"
-                        @click="removeComment(comment)" class="reply">Delete</a>
-                </p>
-                <div v-if="replyToComment == true">
-                    <textarea ref="textarea" v-model="replyContent" type="text"
-                        @blur="replyContent == '' ? replyToComment = false : ''" class="form-control"></textarea>
-                    <button @click="replyTo(comment)" class="btn my-3 btn-primary">Reply</button>
-                </div>
-                <ul v-if="comment.children" class="children">
-                    <comment-list :comments="comment.children" :postId="postId"></comment-list>
-                </ul>
+            <div v-if="replyToComment == true">
+                <textarea ref="textarea" v-model="replyContent"
+                    @blur="replyContent == '' ? replyToComment = false : ''" class="block w-full mt-3"></textarea>
+                <button @click="replyTo(comment)" class="bg-white border border-primary text-xs inline-block mt-2 cursor-pointer text-primary  hover:bg-primary hover:text-white transition duration-500 ease-in-out  rounded px-2 py-1">Reply</button>
             </div>
-        </li>
+            <ul v-if="comment.children">
+                <comment-list :comments="comment.children" :postId="postId"></comment-list>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -42,17 +41,18 @@
                 replyToComment: false
             }
         },
-        props: ["comment","postId"],
+        props: ["comment", "postId"],
         components: {
             'comment-list': CommentList
         },
         computed: {
-            imgUrl(){
-                return process.env.VUE_APP_HTTP +'/storage/uploads/' + this.comment.user.avatar;
+            imgUrl() {
+                return process.env.VUE_APP_HTTP + '/storage/uploads/' + this.comment.user.avatar;
             }
         },
         methods: {
             removeComment(comment) {
+                
                 if (this.$store.getters.getUser != null && this.$store.getters.getUser.id != comment.user.id)
                     return;
 
@@ -64,13 +64,14 @@
                     })
                     .then(({ data }) => {
                         console.log("Deleted Successfully");
-                    })
+                    });
             },
             reply() {
                 this.replyToComment = true;
+                
                 this.$nextTick(() => {
                     this.$refs.textarea.focus();
-                })
+                });
             },
             replyTo(comment) {
                 this.$apollo.mutate({
@@ -89,5 +90,4 @@
             },
         },
     }
-
 </script>

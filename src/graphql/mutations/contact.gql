@@ -1,0 +1,6 @@
+mutation($name: String!,$email: String!,$subject: String!,$message: String!) {
+  contact: contact(name: $name,email: $email,subject: $subject,message:$message){
+        status,
+        message
+  }
+}

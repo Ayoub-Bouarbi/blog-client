@@ -15,6 +15,7 @@ query($slug: String!, $published: Boolean!){
     }
     category{
       id
+      slug
       name
     }
     comments{
